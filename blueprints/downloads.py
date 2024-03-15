@@ -15,14 +15,14 @@ def downloads():
         challenges: list[dict] = json.load(f)
     download_id = request.args.get(key='id', type=int)
     if download_id is None:
-        return {"success": False, "error": "Specify `id` as url parameter"}, 400
+        return {"success": False, "error": "Specify `id` as url arg"}, 400
     download_file = request.args.get(key='file', type=str)
     if download_file is not None:
         try:
-            return send_file(f"files/{str(download_id)}/{download_file}", as_attachment=True), 200
+            return send_file(f"files/{str(download_id)}/{download_file}", as_attachment=True)
         except FileNotFoundError:
-            return {"success": False, "error": "File not found"}, 404
+            return {"success": False, "error": "File not Found"}, 404
     for i in challenges:
         if i['id'] == download_id:
-            return render_template("files.html", challenge=i, id=str(download_id)), 200
+            return render_template("files.html", challenge=i, id=str(download_id))
     return {"success": False, "error": "challenge with such id not found"}, 404
