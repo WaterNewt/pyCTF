@@ -54,4 +54,4 @@ def verify():
             encoded_data = encode_data(encrypted_data)
             decoded_data = decode_data(encoded_data)
             decrypted_data = aes_decrypt(decoded_data, key)
-            return {"success": flag == decrypted_data.decode()}, 200
+            return {"success": flag == decrypted_data.decode()}, 200 if flag == decrypted_data.decode() else 401
