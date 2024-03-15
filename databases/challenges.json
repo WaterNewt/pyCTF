@@ -4,5 +4,11 @@
     "files": ["test.txt"],
     "flag": "DkXVAtUPAHpa666n4hAR+3La2wVONhsxC83lFhGMjH8=",
     "id": 0
+  },
+  {
+    "label": "Another Test",
+    "files": ["test.txt"],
+    "flag": "FLyg5XbxylQZV8EJ/v7tOzDFFSGQHEdKFCqmXCirsvDcguQTexjMZ7Yy8h6l9Yxd",
+    "id": 1
   }
 ]
