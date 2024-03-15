@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Files</title>
+</head>
+<body>
+    <h1>Files for challenge "{{challenge['label']}}"</h1>
+    <ul>
+        {% for i in challenge['files'] %}
+        <li><a href="/downloads/?id={{id}}&file={{i}}">{{i}}</a></li>
+        {%endfor%}
+    </ul>
+</body>
+</html>
