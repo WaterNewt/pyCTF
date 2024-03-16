@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
+import requests
 import json
 from dotenv import load_dotenv
 from blueprints.downloads import app as downloads
@@ -52,10 +53,9 @@ def index():
         id = request.form.get('id', type=int)
         for i in challenges:
             if i['id'] == id:
-                encoded_data = i['flag']
-                decoded_data = decode_data(encoded_data)
-                decrypted_data = aes_decrypt(decoded_data, key)
-                if decrypted_data.decode('utf-8') == flag:
+                verify_url = "http://"+request.host+url_for("verify.verify")+"?id="+str(id)+"&flag="+flag
+                response = requests.get(verify_url)
+                if response.json()['success'] is True:
                     return "Flag is correct!"
                 else:
                     return "Flag is incorrect!"
