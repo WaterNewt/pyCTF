@@ -3,12 +3,21 @@
     "label": "Test",
     "files": ["test.txt"],
     "flag": "DkXVAtUPAHpa666n4hAR+3La2wVONhsxC83lFhGMjH8=",
+    "hints": ["you can use `cat` to view the content of the file"],
     "id": 0
   },
   {
     "label": "Another Test",
     "files": ["test.txt"],
+    "hints": ["it may or may not be encoded"],
     "flag": "FLyg5XbxylQZV8EJ/v7tOzDFFSGQHEdKFCqmXCirsvDcguQTexjMZ7Yy8h6l9Yxd",
     "id": 1
+  },
+  {
+    "label": "unsecure encryption",
+    "files": ["script.c"],
+    "hints": ["what is the encryption of the password?"],
+    "flag": "ttoLsfOcPFnRjOsqnwSuyMDS96VVzSVGqCAA4dJLIOrbBWTUiek/Oqts6YLOv0WXWKmauYgQkjpkfe53bI5MoA==",
+    "id": 2
   }
 ]

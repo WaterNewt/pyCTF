@@ -9,6 +9,12 @@
 {% for i in challenges %}
 <h2>{{i['label']}}</h2>
 <p>Install files <a href="/downloads?id={{i['id']}}">here</a></p>
+<p>Hints:</p>
+<ul>
+    {% for hint in i['hints'] %}
+    <li>{{hint}}</li>
+    {%endfor%}
+</ul>
 <form action="/" method="post">
     <input type="text" placeholder="pyCTF{flag}" name="flag" required>
     <input type="hidden" name="id" value="{{i['id']}}">
