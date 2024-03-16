@@ -3,25 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <script>
+        function openPopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = "block";
+        }
+
+        function closePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = "none";
+        }
+
+    </script>
 </head>
 <body>
 <h1>Challenges</h1>
-{% for i in challenges %}
-<h2>{{i['label']}}</h2>
-<p>Install files <a href="/downloads?id={{i['id']}}">here</a></p>
-<p>Hints:</p>
-<ul>
-    {% for hint in i['hints'] %}
-    <li>{{hint}}</li>
+<div id="challenges-container">
+    {% for i in challenges %}
+    <div class="challenge">
+        <h2>{{i['label']}}</h2>
+        <button class="popup-button" onclick="openPopup('popup{{i['id']}}')">View Details</button>
+        <div id="popup{{i['id']}}" class="popup">
+            <div class="popup-content">
+                <p>Install files <a href="/downloads?id={{i['id']}}">here</a></p>
+                <p>Hints:</p>
+                <ul>
+                    {% for hint in i['hints'] %}
+                    <li>{{hint}}</li>
+                    {%endfor%}
+                </ul>
+                <form action="/" method="post">
+                    <input type="text" placeholder="pyCTF{flag}" name="flag" required>
+                    <input type="hidden" name="id" value="{{i['id']}}">
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+                <button class="close-button" onclick="closePopup('popup{{i['id']}}')">Close</button>
+            </div>
+        </div>
+    </div>
     {%endfor%}
-</ul>
-<form action="/" method="post">
-    <input type="text" placeholder="pyCTF{flag}" name="flag" required>
-    <input type="hidden" name="id" value="{{i['id']}}">
-    <br>
-    <input type="submit" value="Submit">
-</form>
-<br>
-{%endfor%}
+</div>
 </body>
 </html>
