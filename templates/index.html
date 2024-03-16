@@ -19,11 +19,20 @@
 </head>
 <body>
 <h1>Challenges</h1>
+<h2>Points: {{user['points']}}</h2>
 <div id="challenges-container">
     {% for i in challenges %}
+    {% if i['id'] in user['completed'] %}
+    <div class="challenge-completed">
+    {%else%}
     <div class="challenge">
+    {%endif%}
         <h2>{{i['label']}}</h2>
+        <h3>Points: {{i['points']}}</h3>
+        {% if i['id'] in user['completed'] %}
+        {%else%}
         <button class="popup-button" onclick="openPopup('popup{{i['id']}}')">View Details</button>
+        {%endif%}
         <div id="popup{{i['id']}}" class="popup">
             <div class="popup-content">
                 <p>Install files <a href="/downloads?id={{i['id']}}">here</a></p>
